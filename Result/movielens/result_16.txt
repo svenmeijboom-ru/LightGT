@@ -1,0 +1,37 @@
+lr: 0.01 Weight_decay:0.01 Batsh_size:128 src_len:50 Transformer_layers:4 nhead:1 LightGCN_layers:4 Score_weight:0.05
+
+----------------- loss value:0.7511134603444267  model_loss value:8.316157479438356e-05  reg_loss value:0.7510302978403428 entropy_loss value:0.008316157556905904 weight_loss value:0.008316157556905904--------------
+
+---------------------------------0-th Precition:0.0083 Recall:0.0258 NDCG:0.0175 HIT_RATIO:0.0304 Epoch_time:0:0:24---------------------------------
+---------------------------------0-th Precition:0.0110 Recall:0.0440 NDCG:0.0242 HIT_RATIO:0.0358 Epoch_time:0:0:24---------------------------------
+
+----------------- loss value:0.6327719057307524  model_loss value:0.00042949333917075656  reg_loss value:0.6323424086851233 entropy_loss value:0.04294933477307067 weight_loss value:0.04294933477307067--------------
+
+---------------------------------1-th Precition:0.0135 Recall:0.0587 NDCG:0.0442 HIT_RATIO:0.0494 Epoch_time:0:0:32---------------------------------
+---------------------------------1-th Precition:0.0150 Recall:0.0609 NDCG:0.0338 HIT_RATIO:0.0489 Epoch_time:0:0:32---------------------------------
+
+----------------- loss value:0.562038821332595  model_loss value:0.0011780350708731396  reg_loss value:0.5608607898740208 entropy_loss value:0.1178035087445203 weight_loss value:0.1178035087445203--------------
+
+---------------------------------2-th Precition:0.0208 Recall:0.0878 NDCG:0.0517 HIT_RATIO:0.0760 Epoch_time:0:0:26---------------------------------
+---------------------------------2-th Precition:0.0190 Recall:0.0854 NDCG:0.0409 HIT_RATIO:0.0619 Epoch_time:0:0:26---------------------------------
+
+----------------- loss value:0.5015757802654716  model_loss value:0.0023708182989674456  reg_loss value:0.49920496870489683 entropy_loss value:0.23708183362203486 weight_loss value:0.23708183362203486--------------
+
+---------------------------------3-th Precition:0.0229 Recall:0.1097 NDCG:0.0626 HIT_RATIO:0.0837 Epoch_time:0:0:27---------------------------------
+---------------------------------3-th Precition:0.0180 Recall:0.0821 NDCG:0.0497 HIT_RATIO:0.0586 Epoch_time:0:0:27---------------------------------
+
+----------------- loss value:0.4449065748383017  model_loss value:0.003976974910234704  reg_loss value:0.4409296021741979 entropy_loss value:0.39769750482895794 weight_loss value:0.39769750482895794--------------
+
+---------------------------------4-th Precition:0.0167 Recall:0.0789 NDCG:0.0606 HIT_RATIO:0.0608 Epoch_time:0:0:34---------------------------------
+---------------------------------4-th Precition:0.0220 Recall:0.1004 NDCG:0.0676 HIT_RATIO:0.0717 Epoch_time:0:0:34---------------------------------
+
+----------------- loss value:0.3786523938179016  model_loss value:0.005888924112214762  reg_loss value:0.3727634671856375 entropy_loss value:0.588892424807829 weight_loss value:0.588892424807829--------------
+
+---------------------------------5-th Precition:0.0240 Recall:0.1145 NDCG:0.0728 HIT_RATIO:0.0875 Epoch_time:0:0:38---------------------------------
+---------------------------------5-th Precition:0.0240 Recall:0.1010 NDCG:0.0708 HIT_RATIO:0.0782 Epoch_time:0:0:38---------------------------------
+
+----------------- loss value:0.3247106425902423  model_loss value:0.007945217685226132  reg_loss value:0.3167654240832609 entropy_loss value:0.7945217910934897 weight_loss value:0.7945217910934897--------------
+
+---------------------------------6-th Precition:0.0188 Recall:0.0970 NDCG:0.0646 HIT_RATIO:0.0684 Epoch_time:0:0:36---------------------------------
+---------------------------------6-th Precition:0.0270 Recall:0.1065 NDCG:0.0651 HIT_RATIO:0.0879 Epoch_time:0:0:36---------------------------------
+

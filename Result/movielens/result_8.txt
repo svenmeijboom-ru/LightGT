@@ -1,0 +1,2 @@
+lr: 0.01 Weight_decay:0.01 Batsh_size:200 src_len:50 Transformer_layers:4 nhead:1 LightGCN_layers:4 Score_weight:0.05
+

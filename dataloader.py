@@ -10,8 +10,8 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
     dir_str = './Data/' + dataset
 
     if dataset == 'movielens':
-        user_num = 55485
-        item_num = 5986
+        user_num = 100#55485
+        item_num = 1141#5986
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
         v_feat = torch.tensor(np.load(dir_str + '/FeatureVideo_normal.npy', allow_pickle=True), dtype=torch.float).cuda() if has_v else None
