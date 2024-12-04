@@ -45,9 +45,9 @@ if __name__ == '__main__':
     prefix = args.prefix
     aggr_mode = args.aggr_mode
 
-    has_v = True if args.has_v == 'True' else False
-    has_a = True if args.has_a == 'True' else False
-    has_t = True if args.has_t == 'True' else False
+    has_v = False#True if args.has_v == 'True' else False
+    has_a = False#True if args.has_a == 'True' else False
+    has_t = False#True if args.has_t == 'True' else False
     has_entropy_loss = True if args.has_entropy_loss == 'True' else False
     has_weight_loss = True if args.has_weight_loss == 'True' else False
     dim_E = args.dim_E
@@ -68,7 +68,7 @@ if __name__ == '__main__':
     
     print('Data loading ...')
 
-    user_num, item_num, train_edge, user_item_dict, v_feat, a_feat, t_feat = data_load(dataset)
+    user_num, item_num, train_edge, user_item_dict, v_feat, a_feat, t_feat = data_load(dataset, has_v, has_a, has_t)
 
     train_dataset = TrainingDataset(dataset, user_num, item_num, user_item_dict, train_edge, src_len=src_len)
     train_dataloader = DataLoader(train_dataset, batch_size, shuffle=True, num_workers=num_workers)
