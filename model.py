@@ -146,6 +146,9 @@ class Net(nn.Module):
             t_out = self.t_encoder(t_in.transpose(0, 1), t_src, src_key_padding_mask=mask).transpose(0, 1)[:, 0]
             t_out = F.leaky_relu(self.t_dense(t_out))
 
+        print(user_emb)
+        print(item_emb)
+
         return user_emb, item_emb, v, a, t, v_out, a_out, t_out
 
     def loss(self, users, items, user_item, mask):
