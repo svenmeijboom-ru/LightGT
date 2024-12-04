@@ -14,6 +14,8 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         item_num = 1141#5986
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
+        print(train_edge)
+        print(user_item_dict)
         v_feat = torch.tensor(np.load(dir_str + '/FeatureVideo_normal.npy', allow_pickle=True), dtype=torch.float).cuda() if has_v else None
         a_feat = torch.tensor(np.load(dir_str + '/FeatureAudio_avg_normal.npy', allow_pickle=True), dtype=torch.float).cuda() if has_a else None
         t_feat = torch.tensor(np.load(dir_str + '/FeatureText_stl_normal.npy', allow_pickle=True), dtype=torch.float).cuda() if has_t else None
