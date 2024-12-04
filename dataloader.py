@@ -35,8 +35,17 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         v_feat = torch.load(dir_str + '/v_feat.pt').to(dtype=torch.float).cuda() if has_v else None
         a_feat = None
         t_feat = torch.tensor(np.load(dir_str + '/kwai_t_64.npy')).to(dtype=torch.float).cuda() if has_t else None
+    elif dataset == 'instacart':
+        user_num = 206209
+        item_num = 49677
+        train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
+        user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
+        v_feat = None
+        a_feat = None
+        t_feat = None
 
     train_edge[:, 1] += user_num
+    print(train_edge)
     user_item_dict = {i:[j+user_num for j in user_item_dict[i]] for i in user_item_dict.keys()}
 
     return user_num, item_num, train_edge, user_item_dict, v_feat, a_feat, t_feat
