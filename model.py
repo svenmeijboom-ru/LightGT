@@ -188,12 +188,12 @@ class Net(nn.Module):
 
         score1 = torch.matmul(user_emb[users], item_emb.T)
 
-        if a is not None and t is not None:
-            score2 = torch.matmul(v_out, v.T) + torch.matmul(a_out, a.T) + torch.matmul(t_out, t.T)
-        else:
-            score2 = torch.matmul(v_out, v.T)
+        #if a is not None and t is not None:
+        #    score2 = torch.matmul(v_out, v.T) + torch.matmul(a_out, a.T) + torch.matmul(t_out, t.T)
+        #else:
+        #    score2 = torch.matmul(v_out, v.T)
 
-        score_matrix = self.score_weight1 * score1 + self.score_weight2 * score2
+        score_matrix = self.score_weight1 * score1 #+ self.score_weight2 * score2
 
         return score_matrix
 
