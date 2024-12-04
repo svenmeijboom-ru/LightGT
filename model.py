@@ -165,13 +165,13 @@ class Net(nn.Module):
 
         score1 = torch.sum(user_emb[users] * item_emb[items], dim=1).view(-1, 2)
 
-        if a is not None and t is not None:
-            score2_1 = torch.sum(v_out * v[pos_items], dim=1).view(-1, 1) + torch.sum(a_out * a[pos_items], dim=1).view(-1, 1) + torch.sum(t_out * t[pos_items], dim=1).view(-1, 1)
-            score2_2 = torch.sum(v_out * v[neg_items], dim=1).view(-1, 1) + torch.sum(a_out * a[neg_items], dim=1).view(-1, 1) + torch.sum(t_out * t[neg_items], dim=1).view(-1, 1)
-        else:
-            score2_1 = torch.sum(v_out * v[pos_items], dim=1).view(-1, 1)
-            score2_2 = torch.sum(v_out * v[neg_items], dim=1).view(-1, 1)
-        score = self.score_weight1 * score1 + self.score_weight2 * torch.cat((score2_1, score2_2), dim=1)
+        #if a is not None and t is not None:
+        #    score2_1 = torch.sum(v_out * v[pos_items], dim=1).view(-1, 1) + torch.sum(a_out * a[pos_items], dim=1).view(-1, 1) + torch.sum(t_out * t[pos_items], dim=1).view(-1, 1)
+        #    score2_2 = torch.sum(v_out * v[neg_items], dim=1).view(-1, 1) + torch.sum(a_out * a[neg_items], dim=1).view(-1, 1) + torch.sum(t_out * t[neg_items], dim=1).view(-1, 1)
+        #else:
+        #    score2_1 = torch.sum(v_out * v[pos_items], dim=1).view(-1, 1)
+        #    score2_2 = torch.sum(v_out * v[neg_items], dim=1).view(-1, 1)
+        score = self.score_weight1 * score1 #+ self.score_weight2 * torch.cat((score2_1, score2_2), dim=1)
 
         loss = -torch.mean(torch.log(torch.sigmoid(torch.matmul(score, self.weight)))).cuda()
         reg_embedding_loss = (user_emb**2).mean() + (item_emb**2).mean()
