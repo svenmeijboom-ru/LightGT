@@ -45,9 +45,7 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         t_feat = None
 
     train_edge[:, 1] += user_num
-    print(train_edge)
     user_item_dict = {i:[j+user_num for j in user_item_dict[i]] for i in user_item_dict.keys()}
-    print(user_item_dict)
 
     return user_num, item_num, train_edge, user_item_dict, v_feat, a_feat, t_feat
 
