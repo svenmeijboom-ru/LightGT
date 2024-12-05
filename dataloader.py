@@ -5,6 +5,8 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from scipy.sparse import csr_matrix
 import scipy.sparse as sp
+import itertools
+
 
 def data_load(dataset, has_v=True, has_a=True, has_t=True):
     dir_str = './Data/' + dataset
@@ -40,6 +42,8 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         item_num = 49677
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
+        for i in user_item_dict.keys():
+            user_item_dict[i] = list(itertools.chain.from_iterable(user_item_dict[i]))
         v_feat = None
         a_feat = None
         t_feat = None
