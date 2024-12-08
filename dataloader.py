@@ -81,8 +81,11 @@ class TrainingDataset(Dataset):
                     break
             except:
                 break
-
-        temp = list(self.user_item_dict[user])
+        
+        try:
+            temp = list(self.user_item_dict[user])
+        except:
+            temp = []
         random.shuffle(temp)
         if len(temp) > self.src_len:
             mask = torch.ones(self.src_len + 1) == 0
