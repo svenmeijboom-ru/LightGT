@@ -9,8 +9,9 @@ user_item_dict = np.load('./Data/instacart/user_item_dict.npy', allow_pickle=Tru
 #val = np.load('./Data/instacart/val.npy', allow_pickle=True)
 #test = np.load('./Data/instacart/test.npy', allow_pickle=True)
 
-d = dict(enumerate(user_item_dict.flatten(), 1))
-print(d[1]['1'])#[2533])
+#d = dict(enumerate(user_item_dict.flatten(), 1))
+#print(d[1]['1'])#[2533])
+print(user_item_dict)
 
 #df_train_edge = pd.DataFrame(train_edge)
 #df_user_item_dict = pd.DataFrame(user_item_dict)

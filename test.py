@@ -6,11 +6,15 @@ dir_str = './Data/' + dataset
 
 # Open and read the JSON file
 with open(dir_str+'instacart_merged.json', 'r') as file:
-    user_item_dict = json.load(file)
+    old_user_item_dict = json.load(file)
 
 train_edge = []
 val = []
 test = []
+
+user_item_dict = {int(k)-1: v for k, v in old_user_item_dict.items()}
+
+
 for k in user_item_dict.keys():
     v = user_item_dict[k].pop()
     t = user_item_dict[k].pop()
@@ -27,6 +31,7 @@ val_array_with_lists = np.array(val, dtype=object)
 test_array_with_lists = np.array(test, dtype=object)
 
 #print(user_item_dict)
+np.save(dir_str+'user_item_dict.npy', user_item_dict)
 np.save(dir_str+'train.npy', train_edge)
 np.save(dir_str+'val.npy', val_array_with_lists)
 np.save(dir_str+'test.npy', test_array_with_lists)
