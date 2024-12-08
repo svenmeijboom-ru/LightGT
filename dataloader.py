@@ -76,7 +76,10 @@ class TrainingDataset(Dataset):
         user, pos_item = self.edge_index[index]
         while True:
             neg_item = random.sample(self.all_set, 1)[0]
-            if neg_item not in self.user_item_dict[user]:
+            try:
+                if neg_item not in self.user_item_dict[user]:
+                    break
+            except:
                 break
 
         temp = list(self.user_item_dict[user])
