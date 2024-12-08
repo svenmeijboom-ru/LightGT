@@ -42,7 +42,7 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         item_num = 49677
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
-        print(user_item_dict[2533])
+        user_item_dict = dict(enumerate(user_item_dict.flatten()))[0]
 
         for i in user_item_dict.keys():
             user_item_dict[i] = list(itertools.chain.from_iterable(user_item_dict[i]))

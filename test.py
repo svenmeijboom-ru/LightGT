@@ -16,15 +16,19 @@ user_item_dict = {int(k)-1: v for k, v in old_user_item_dict.items()}
 
 
 for k in user_item_dict.keys():
-    v = user_item_dict[k].pop()
-    t = user_item_dict[k].pop()
+    if len(user_item_dict[k]) > 2:
+        v = user_item_dict[k].pop()
+        t = user_item_dict[k].pop()
+    else:
+        v = []
+        t = []
     
     val.append([int(k)] + v)
     test.append([int(k)] + t)
 
     for i in user_item_dict[k]:
         for ii in i:
-            train_edge.append([int(k), ii])
+            train_edge.append([int(k)-1, ii])
 
 #print(val)
 val_array_with_lists = np.array(val, dtype=object)
