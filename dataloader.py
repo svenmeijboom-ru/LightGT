@@ -38,8 +38,32 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         a_feat = None
         t_feat = torch.tensor(np.load(dir_str + '/kwai_t_64.npy')).to(dtype=torch.float).cuda() if has_t else None
     elif dataset == 'instacart':
-        user_num = 206209
-        item_num = 49677
+        user_num = 19436
+        item_num = 13898
+        train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
+        user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
+        #user_item_dict = dict(enumerate(user_item_dict.flatten()))[0]
+
+        for i in user_item_dict.keys():
+            user_item_dict[i] = list(itertools.chain.from_iterable(user_item_dict[i]))
+        v_feat = None
+        a_feat = None
+        t_feat = None
+    elif dataset == 'tafeng':
+        user_num = 13859
+        item_num = 11998
+        train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
+        user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
+        #user_item_dict = dict(enumerate(user_item_dict.flatten()))[0]
+
+        for i in user_item_dict.keys():
+            user_item_dict[i] = list(itertools.chain.from_iterable(user_item_dict[i]))
+        v_feat = None
+        a_feat = None
+        t_feat = None
+    elif dataset == 'dunnhumby':
+        user_num = 22531
+        item_num = 3921
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
         #user_item_dict = dict(enumerate(user_item_dict.flatten()))[0]

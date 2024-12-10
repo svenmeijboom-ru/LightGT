@@ -246,7 +246,7 @@ class Net(nn.Module):
 
         return precision / length, recall / length, ndcg / length
 
-    def full_accuracy(self, val_data, step=2000, topk=10):
+    def full_accuracy(self, val_data, user_item_dict, step=2000, topk=10):
         start_index = 0
         end_index = self.user_num if step == None else step
 
@@ -271,39 +271,75 @@ class Net(nn.Module):
                 end_index = self.user_num
         
         length = 0
-        precision = recall = ndcg = 0.0
-        total_hit = total_pos_item = 0
+        #precision = recall = ndcg = 0.0
+        #total_hit = total_pos_item = 0
+
+        recall_expl = recall_rep = 0.0
+        phr_expl = phr_rep = 0
+        num_repeat_users, num_exploration_users = 0
+        repr = explr = 0.0
 
         for data in val_data:
             user = data[0]
-            pos_items = set(data[1:])
+            train_items = set(user_item_dict[user])
+            pos_items = set(data[1:]) # Set of validation items
+
             num_pos = len(pos_items)
             if num_pos == 0:
                 continue
             length += 1
-            items_list = all_index_of_rank_list[user].tolist()
 
+            items_list = all_index_of_rank_list[user].tolist()
             items = set(items_list)
 
-            num_hit = len(pos_items.intersection(items))
-            total_hit += num_hit
-            total_pos_item += num_pos
+            repeat_items = pos_items & train_items
+            num_repeat_items = len(repeat_items)
+            if num_repeat_items > 0:
+                num_repeat_users += 1
+                num_rep_hit = len(repeat_items.intersection(items))
+                recall_rep += float(num_rep_hit / num_repeat_items)
+                if num_rep_hit > 0:
+                    phr_rep += 1
+                repr += num_repeat_items / num_pos
 
-            precision += float(num_hit / topk)
-            recall += float(num_hit / num_pos)
+            exploration_items = pos_items - train_items
+            num_exploration_items = len(exploration_items)
+            if num_exploration_items > 0:
+                num_exploration_users += 1
+                num_exp_hit = len(exploration_items.intersection(items))
+                recall_expl += float(num_exp_hit / num_exploration_items)
+                if num_exp_hit > 0:
+                    phr_expl += 1
+                explr += num_exploration_items / num_pos
+
+            # num_pos = len(pos_items)
+            # if num_pos == 0:
+            #     continue
+            # length += 1
+            # items_list = all_index_of_rank_list[user].tolist()
+
+            #items = set(items_list) # Set of predicted items
+
+            # num_hit = len(pos_items.intersection(items))
+            # total_hit += num_hit
+            # total_pos_item += num_pos
+
+            # precision += float(num_hit / topk)
+            # recall += float(num_hit / num_pos)
+
             
-            ndcg_score = 0.0
-            max_ndcg_score = 0.0
+            # ndcg_score = 0.0
+            # max_ndcg_score = 0.0
 
-            for i in range(min(num_pos, topk)):
-                max_ndcg_score += 1 / math.log2(i+2)
-            if max_ndcg_score == 0:
-                continue
+            # for i in range(min(num_pos, topk)):
+            #     max_ndcg_score += 1 / math.log2(i+2)
+            # if max_ndcg_score == 0:
+            #     continue
 
-            for i, temp_item in enumerate(items_list):
-                if temp_item in pos_items:
-                    ndcg_score += 1 / math.log2(i+2)
+            # for i, temp_item in enumerate(items_list):
+            #     if temp_item in pos_items:
+            #         ndcg_score += 1 / math.log2(i+2)
 
-            ndcg += ndcg_score / max_ndcg_score
+            # ndcg += ndcg_score / max_ndcg_score
 
-        return precision / length, recall / length, ndcg / length, total_hit / total_pos_item
+        return recall_expl / num_exploration_users, recall_rep / num_repeat_users, phr_expl / num_exploration_users, phr_rep / num_repeat_users, explr / length, repr / length

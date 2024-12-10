@@ -3,6 +3,15 @@ import pandas as pd
 
 #train_edge = np.load('./Data/movielens/train.npy', allow_pickle=True)
 user_item_dict = np.load('./Data/instacart/user_item_dict.npy', allow_pickle=True)
+user_item_dict = dict(enumerate(user_item_dict.flatten()))[0]
+print(len(user_item_dict))
+
+settotal = {}
+for user in user_item_dict:
+    for cart in user_item_dict[user]:
+        settotal.update(set(cart))
+len(settotal)
+
 #v_feat = np.load('./Data/movielens/FeatureVideo_normal.npy', allow_pickle=True)
 #a_feat = np.load('./Data/movielens/FeatureAudio_avg_normal.npy', allow_pickle=True)
 #t_feat = np.load('./Data/movielens/FeatureText_stl_normal.npy', allow_pickle=True)
@@ -12,10 +21,12 @@ user_item_dict = np.load('./Data/instacart/user_item_dict.npy', allow_pickle=Tru
 #d = dict(enumerate(user_item_dict.flatten(), 1))
 #print(d[1]['1'])#[2533])
 #print(user_item_dict)
-user_item_dict = dict(enumerate(user_item_dict.flatten()))[0]
+#user_item_dict = dict(enumerate(user_item_dict.flatten()))[0]
 #print(user_item_dict)
-print(user_item_dict[0])
-print(user_item_dict[54])
+#print(user_item_dict[0])
+#print(user_item_dict[54])
+
+
 
 #df_train_edge = pd.DataFrame(train_edge)
 #df_user_item_dict = pd.DataFrame(user_item_dict)
