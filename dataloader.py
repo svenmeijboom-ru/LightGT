@@ -13,7 +13,7 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
 
     if dataset == 'movielens':
         user_num = 100#55485
-        item_num = 1141#5986
+        item_num = 1139#5986
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
         print(train_edge)
@@ -38,11 +38,10 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         a_feat = None
         t_feat = torch.tensor(np.load(dir_str + '/kwai_t_64.npy')).to(dtype=torch.float).cuda() if has_t else None
     elif dataset == 'instacart':
-        user_num = 19436
-        item_num = 13898
+        user_num = 19435
+        item_num = 13896
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
-        #user_item_dict = dict(enumerate(user_item_dict.flatten()))[0]
 
         for i in user_item_dict.keys():
             user_item_dict[i] = list(itertools.chain.from_iterable(user_item_dict[i]))
@@ -50,11 +49,10 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         a_feat = None
         t_feat = None
     elif dataset == 'tafeng':
-        user_num = 13859
-        item_num = 11998
+        user_num = 13858
+        item_num = 11995
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
-        #user_item_dict = dict(enumerate(user_item_dict.flatten()))[0]
 
         for i in user_item_dict.keys():
             user_item_dict[i] = list(itertools.chain.from_iterable(user_item_dict[i]))
@@ -62,11 +60,10 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         a_feat = None
         t_feat = None
     elif dataset == 'dunnhumby':
-        user_num = 22531
-        item_num = 3921
+        user_num = 22530
+        item_num = 3919
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
-        #user_item_dict = dict(enumerate(user_item_dict.flatten()))[0]
 
         for i in user_item_dict.keys():
             user_item_dict[i] = list(itertools.chain.from_iterable(user_item_dict[i]))
