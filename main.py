@@ -175,7 +175,7 @@ if __name__ == '__main__':
             torch.cuda.empty_cache()
 
             print('------------------{0}-th RecallExpl:{1:.4f} RecallRep:{2:.4f} PHRExpl:{3:.4f} PHRRep:{4:.4f} ExplR:{5:.4f} Repr:{6:.4f} Epoch_time:{7}:{8}:{9}---------------------------------'.format(
-                epoch, test_recall_expl, test_recall_rep, test_phr_expl, test_phr_rep, h, m, s))
+                epoch, test_recall_expl, test_recall_rep, test_phr_expl, test_phr_rep, explr, repr, h, m, s))
 
             with open(path, 'a') as save_file:
                 save_file.write('------------------{0}-th RecallExpl:{1:.4f} RecallRep:{2:.4f} PHRExpl:{3:.4f} PHRRep:{4:.4f} Epoch_time:{5}:{6}:{7}---------------------------------\n'.format(
