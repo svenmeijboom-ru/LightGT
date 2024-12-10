@@ -276,7 +276,7 @@ class Net(nn.Module):
 
         recall_expl = recall_rep = 0.0
         phr_expl = phr_rep = 0
-        num_repeat_users, num_exploration_users = 0
+        num_repeat_users = num_exploration_users = 0
         repr = explr = 0.0
 
         for data in val_data:
