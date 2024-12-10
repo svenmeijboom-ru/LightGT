@@ -246,7 +246,7 @@ class Net(nn.Module):
 
         return precision / length, recall / length, ndcg / length
 
-    def full_accuracy(self, val_data, user_item_dict, step=2000, topk=10):
+    def full_accuracy(self, val_data, user_item_dict, step=2000, topk=20):
         start_index = 0
         end_index = self.user_num if step == None else step
 
