@@ -1,11 +1,11 @@
 import numpy as np
 import json
 
-dataset = 'instacart/'
+dataset = 'dunnhumby/'
 dir_str = './Data/' + dataset
 
 # Open and read the JSON file
-with open(dir_str+'instacart_merged.json', 'r') as file:
+with open(dir_str+'dunnhumby_merged.json', 'r') as file:
     old_user_item_dict = json.load(file)
 
 train_edge = []
