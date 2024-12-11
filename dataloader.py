@@ -143,6 +143,9 @@ class TrainingDataset(Dataset):
                 adj_mat = adj_mat.tolil()
                 train_user = self.edge_index[:, 0]
                 train_item = self.edge_index[:, 1] - self.user_num
+                print(self.user_num, self.item_num)
+                print((np.ones(len(train_user)), (train_user, train_item)))
+                print(len(((np.ones(len(train_user)), (train_user, train_item)))))
                 R = csr_matrix((np.ones(len(train_user)), (train_user, train_item)), shape=(self.user_num, self.item_num)).tolil()
                 adj_mat[:self.user_num, self.user_num:] = R
                 adj_mat[self.user_num:, :self.user_num] = R.T
