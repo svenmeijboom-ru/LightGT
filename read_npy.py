@@ -8,6 +8,7 @@ print(train_edge)
 print(len(train_edge))
 items = set(train_edge[:, 1])
 print(max(items))
+print(min(items))
 #user_item_dict = np.load('./Data/movielens/train_edge.npy', allow_pickle=True).item()
 #for i in user_item_dict.keys():
 #    user_item_dict[i] = list(itertools.chain.from_iterable(user_item_dict[i]))
