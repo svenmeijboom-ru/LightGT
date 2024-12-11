@@ -49,8 +49,8 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         a_feat = None
         t_feat = None
     elif dataset == 'tafeng':
-        user_num = 13949 #13858 #32266 #13947 #13858
-        item_num = 11996 #23812 #11995
+        user_num = 13950 #13858 #32266 #13947 #13858
+        item_num = 11997 #23812 #11995
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
 
