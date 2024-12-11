@@ -3,21 +3,23 @@ import pandas as pd
 import itertools
 
 
-#train_edge = np.load('./Data/movielens/train.npy', allow_pickle=True)
-user_item_dict = np.load('./Data/movielens/user_item_dict.npy', allow_pickle=True).item()
+train_edge = np.load('./Data/instacart/train.npy', allow_pickle=True)
+print(train_edge)
+print(len(train_edge))
+#user_item_dict = np.load('./Data/movielens/train_edge.npy', allow_pickle=True).item()
 #for i in user_item_dict.keys():
 #    user_item_dict[i] = list(itertools.chain.from_iterable(user_item_dict[i]))
-print(len(user_item_dict))
+#print(len(user_item_dict))
 #user_item_dict = dict(enumerate(user_item_dict.flatten()))[0]
 #print(len(user_item_dict))
 
-settotal = []
-settotal = set(settotal)
-for user in user_item_dict:
-    #set(list(user_item_dict[user]))
-    settotal.update(set(user_item_dict[user]))
-print(len(settotal))
-print(max(settotal))
+#settotal = []
+#settotal = set(settotal)
+#for user in user_item_dict:
+#    #set(list(user_item_dict[user]))
+#    settotal.update(set(user_item_dict[user]))
+#print(len(settotal))
+#print(max(settotal))
 
 #v_feat = np.load('./Data/movielens/FeatureVideo_normal.npy', allow_pickle=True)
 #a_feat = np.load('./Data/movielens/FeatureAudio_avg_normal.npy', allow_pickle=True)

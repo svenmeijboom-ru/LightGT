@@ -1,18 +1,18 @@
 import numpy as np
 import json
 
-dataset = 'dunnhumby/'
+dataset = 'instacart/'
 dir_str = './Data/' + dataset
 
 # Open and read the JSON file
-with open(dir_str+'dunnhumby_merged.json', 'r') as file:
+with open(dir_str+'instacart_merged.json', 'r') as file:
     old_user_item_dict = json.load(file)
 
 train_edge = []
 val = []
 test = []
 
-user_item_dict = {int(k)-1: v for k, v in old_user_item_dict.items()}
+user_item_dict = {int(k): v for k, v in old_user_item_dict.items()}
 
 
 for k in user_item_dict.keys():
