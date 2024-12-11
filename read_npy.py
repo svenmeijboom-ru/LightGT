@@ -6,7 +6,7 @@ import itertools
 train_edge = np.load('./Data/dunnhumby/train.npy', allow_pickle=True)
 print(train_edge)
 print(len(train_edge))
-items = set(train_edge[:, 1])
+items = set(train_edge[:, 0])
 print(max(items))
 print(min(items))
 #user_item_dict = np.load('./Data/movielens/train_edge.npy', allow_pickle=True).item()
