@@ -49,8 +49,8 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         a_feat = None
         t_feat = None
     elif dataset == 'tafeng':
-        user_num = 13950 #13858 #32266 #13947 #13858
-        item_num = 11997 #23812 #11995
+        user_num = 13949 #13858 #32266 #13947 #13858
+        item_num = 11996 #23812 #11995
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
 
@@ -60,8 +60,8 @@ def data_load(dataset, has_v=True, has_a=True, has_t=True):
         a_feat = None
         t_feat = None
     elif dataset == 'dunnhumby':
-        user_num = 22530 #2500
-        item_num = 3919 #9000
+        user_num = 22537 #2500
+        item_num = 3920 #9000
         train_edge = np.load(dir_str + '/train.npy', allow_pickle=True)
         user_item_dict = np.load(dir_str + '/user_item_dict.npy', allow_pickle=True).item()
 
@@ -143,9 +143,6 @@ class TrainingDataset(Dataset):
                 adj_mat = adj_mat.tolil()
                 train_user = self.edge_index[:, 0]
                 train_item = self.edge_index[:, 1] - self.user_num
-                print(self.user_num, self.item_num)
-                print((np.ones(len(train_user)), (train_user, train_item)))
-                print(len(((np.ones(len(train_user)), (train_user, train_item)))))
                 R = csr_matrix((np.ones(len(train_user)), (train_user, train_item)), shape=(self.user_num, self.item_num)).tolil()
                 adj_mat[:self.user_num, self.user_num:] = R
                 adj_mat[self.user_num:, :self.user_num] = R.T

@@ -3,7 +3,7 @@ import pandas as pd
 import itertools
 
 
-train_edge = np.load('./Data/instacart/train.npy', allow_pickle=True)
+train_edge = np.load('./Data/dunnhumby/train.npy', allow_pickle=True)
 print(train_edge)
 print(len(train_edge))
 items = set(train_edge[:, 1])
