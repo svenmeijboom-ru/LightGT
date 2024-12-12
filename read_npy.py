@@ -3,12 +3,12 @@ import pandas as pd
 import itertools
 
 
-train_edge = np.load('./Data/dunnhumby/train.npy', allow_pickle=True)
-print(train_edge)
-print(len(train_edge))
-items = set(train_edge[:, 0])
-print(max(items))
-print(min(items))
+# train_edge = np.load('./Data/dunnhumby/train.npy', allow_pickle=True)
+# print(train_edge)
+# print(len(train_edge))
+# items = set(train_edge[:, 0])
+# print(max(items))
+# print(min(items))
 #user_item_dict = np.load('./Data/movielens/train_edge.npy', allow_pickle=True).item()
 #for i in user_item_dict.keys():
 #    user_item_dict[i] = list(itertools.chain.from_iterable(user_item_dict[i]))
@@ -58,3 +58,9 @@ print(min(items))
 # df_t_feat.to_excel('t_feat_xlsx.xlsx', index=False)
 #df_val.to_excel('val_xlsx.xlsx', index=False)
 #df_test.to_excel('test_xlsx.xlsx', index=False)
+
+
+val = np.load('./Data/instacart/val.npy', allow_pickle=True)
+for data in val:
+    pos_items = set(data[1:])
+    print(pos_items)
